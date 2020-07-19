@@ -1,15 +1,18 @@
 package com.ynz.front.demothymeleaf.controllers;
 
 import com.ynz.front.demothymeleaf.domain.Student;
+import com.ynz.front.demothymeleaf.domain.Ticket;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
@@ -38,9 +41,20 @@ public class FrontController {
 
     @GetMapping("/names")
     public String getNames(Model model) {
-        List<String> names = Stream.of("Mike","Mia","Chris","Evan","Merry").collect(toList());
-        model.addAttribute("names",names);
+        List<String> names = Stream.of("Mike", "Mia", "Chris", "Evan", "Merry").collect(toList());
+        model.addAttribute("names", names);
         return "names";
+    }
+
+    @GetMapping("/ticket")
+    public ModelAndView getTicket(Model model) {
+        Ticket ticket = Ticket.builder().dateTime(LocalDateTime.now()).num(UUID.randomUUID().toString()).build();
+        model.addAttribute("ticket", ticket);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("ticket");
+        modelAndView.addObject("ticket", ticket);
+
+        return modelAndView;
     }
 
 }
