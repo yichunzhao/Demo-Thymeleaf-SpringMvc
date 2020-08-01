@@ -1,4 +1,4 @@
-package com.ynz.front.demothymeleaf.domain;
+package com.ynz.front.demothymeleaf.dto;
 
 import lombok.Builder;
 import lombok.Data;
