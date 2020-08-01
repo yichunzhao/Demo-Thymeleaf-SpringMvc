@@ -28,19 +28,15 @@ public class FrontController {
 
     @PostMapping("/clients")
     public String createClient(@Valid @ModelAttribute ClientDto clientDto, Model model) {
-        String nextPage = null;
 
         Client client = new Client();
         client.setFirstName(clientDto.getFirstName());
         client.setLastName(clientDto.getLastName());
         client.setPhone(clientDto.getPhone());
-        Client persisted = clientRepository.save(client);
-        if (persisted == null) nextPage = "error";
+        clientRepository.save(client);
 
         model.addAttribute("name", client.getFirstName() + " " + client.getLastName());
-        nextPage = "saved";
-
-        return nextPage;
+        return "saved";
     }
 
     @GetMapping("/names")

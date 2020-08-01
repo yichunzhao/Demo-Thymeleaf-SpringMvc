@@ -2,11 +2,22 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>home</title>
+    <title>error page</title>
 </head>
 <body>
 
- <h1>Something wrong. Client is not saved. </h1>
+<h1>Error Page</h1>
+
+<div>
+    <table>
+        <tbody>
+        <tr th:each="error:${errs}">
+            <td th:text="${error}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
 
 </body>
 </html>
