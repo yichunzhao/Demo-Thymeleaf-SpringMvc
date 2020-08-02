@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
@@ -24,6 +24,24 @@ public class FrontController {
     @GetMapping("/")
     public String home() {
         return "index";
+    }
+
+    @GetMapping("/createclient")
+    public String createClient() {
+        return "createclient";
+    }
+
+    @GetMapping("/showclients")
+    public String showClients(Model model){
+        List<Client> clients = new ArrayList<>();
+        clientRepository.findAll().forEach(client -> clients.add(client));
+
+        List<ClientDto> clientDtoList = clients.stream().map(client -> ClientDto.builder()
+                .firstName(client.getFirstName()).lastName(client.getLastName()).phone(client.getPhone()).build())
+                .collect(toList());
+        model.addAttribute("clients",clientDtoList);
+
+        return "showclients";
     }
 
     @PostMapping("/clients")
@@ -39,11 +57,5 @@ public class FrontController {
         return "saved";
     }
 
-    @GetMapping("/names")
-    public String getNames(Model model) {
-        List<String> names = Stream.of("Mike", "Mia", "Chris", "Evan", "Merry").collect(toList());
-        model.addAttribute("names", names);
-        return "names";
-    }
 
 }
