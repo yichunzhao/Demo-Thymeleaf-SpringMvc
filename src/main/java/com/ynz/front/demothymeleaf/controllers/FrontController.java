@@ -6,6 +6,7 @@ import com.ynz.front.demothymeleaf.repositories.ClientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,20 +33,23 @@ public class FrontController {
     }
 
     @GetMapping("/showclients")
-    public String showClients(Model model){
+    public String showClients(Model model) {
         List<Client> clients = new ArrayList<>();
         clientRepository.findAll().forEach(client -> clients.add(client));
 
         List<ClientDto> clientDtoList = clients.stream().map(client -> ClientDto.builder()
                 .firstName(client.getFirstName()).lastName(client.getLastName()).phone(client.getPhone()).build())
                 .collect(toList());
-        model.addAttribute("clients",clientDtoList);
+        model.addAttribute("clients", clientDtoList);
 
         return "showclients";
     }
 
     @PostMapping("/clients")
-    public String createClient(@Valid @ModelAttribute ClientDto clientDto, Model model) {
+    public String createClient(@Valid @ModelAttribute("clientDto") ClientDto clientDto, BindingResult errors, Model model) {
+        if (errors.hasErrors()) {
+            return "createclient";
+        }
 
         Client client = new Client();
         client.setFirstName(clientDto.getFirstName());
@@ -54,8 +58,7 @@ public class FrontController {
         clientRepository.save(client);
 
         model.addAttribute("name", client.getFirstName() + " " + client.getLastName());
-        return "saved";
+        return "index";
     }
-
 
 }

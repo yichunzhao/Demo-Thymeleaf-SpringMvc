@@ -1,10 +1,11 @@
 package com.ynz.front.demothymeleaf.exceptions;
 
+import com.ynz.front.demothymeleaf.dto.ClientDto;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -21,12 +22,12 @@ public class GlobalExceptionHandlers {
         return "error";
     }
 
-    @ExceptionHandler(BindException.class)
-    public String handleBindException(BindException e, Model model) {
-        List<String> errors = e.getAllErrors().stream().map(objectError -> objectError.getDefaultMessage()).collect(toList());
-        model.addAttribute("errs", errors);
-        return "error";
-    }
+//    @ExceptionHandler(BindException.class)
+//    public String handleBindException(BindException e, Model model) {
+//        List<String> errors = e.getAllErrors().stream().map(objectError -> objectError.getDefaultMessage()).collect(toList());
+//        model.addAttribute("errs", errors);
+//        return "error";
+//    }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public String handleDataIntegrityViolationException(DataIntegrityViolationException e, Model model) {
@@ -34,4 +35,10 @@ public class GlobalExceptionHandlers {
         model.addAttribute("errs", errors);
         return "error";
     }
+
+    @ModelAttribute
+    public ClientDto clientDto() {
+        return new ClientDto();
+    }
+
 }
