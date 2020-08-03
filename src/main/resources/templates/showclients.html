@@ -14,6 +14,7 @@
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
+            <th><span th:text="#{label.email}"></span></th>
             <th>Phone</th>
         </tr>
         </thead>
@@ -21,10 +22,16 @@
         <tr th:each="client:${clients}">
             <td th:text="${client.firstName}"></td>
             <td th:text="${client.lastName}"></td>
+            <td th:text="${client.email}"></td>
             <td th:text="${client.phone}"></td>
         </tr>
         </tbody>
     </table>
 </div>
+
+<div>
+    <a href="/">Go Back Home</a>
+</div>
+
 </body>
 </html>

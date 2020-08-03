@@ -35,6 +35,19 @@
                 </td>
             </tr>
             <tr>
+                <td>
+                    <label th:text="#{label.email}"></label>
+                </td>
+
+                <td>
+                    <input type="text" th:field="*{email}" class="small" th:errorclass="fieldError">
+                </td>
+                <td>
+                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect date</span>
+                </td>
+            </tr>
+
+            <tr>
                 <td><label th:text="#{label.phone}"></label></td>
                 <td>
                     <input type="text" th:field="*{phone}" class="small" th:errorclass="fieldError">
@@ -49,8 +62,12 @@
             </tr>
         </table>
     </form>
-
 </div>
+
+<div>
+    <a href="/">Go Back Home</a>
+</div>
+
 
 </body>
 </html>

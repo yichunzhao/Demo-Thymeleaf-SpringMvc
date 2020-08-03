@@ -38,7 +38,10 @@ public class FrontController {
         clientRepository.findAll().forEach(client -> clients.add(client));
 
         List<ClientDto> clientDtoList = clients.stream().map(client -> ClientDto.builder()
-                .firstName(client.getFirstName()).lastName(client.getLastName()).phone(client.getPhone()).build())
+                .firstName(client.getFirstName())
+                .lastName(client.getLastName())
+                .email(client.getEmail())
+                .phone(client.getPhone()).build())
                 .collect(toList());
         model.addAttribute("clients", clientDtoList);
 
@@ -55,6 +58,7 @@ public class FrontController {
         client.setFirstName(clientDto.getFirstName());
         client.setLastName(clientDto.getLastName());
         client.setPhone(clientDto.getPhone());
+        client.setEmail(clientDto.getEmail());
         clientRepository.save(client);
 
         model.addAttribute("name", client.getFirstName() + " " + client.getLastName());

@@ -21,7 +21,10 @@ public class ClientDto {
     @Size(min = 3, max = 25, message = "Last name length must be less than 25 and bigger than 3")
     private String lastName;
 
+    @NotBlank(message = "Email is mandatory")
+    private String email;
+
     @NotBlank(message = "Phone number is mandatory")
-    @Size(min = 11, max = 11, message = "Phone must contain 11 characters.")
+    @Size(min = 8, max = 8, message = "Phone must contain 8 digits.")
     private String phone;
 }
