@@ -1,6 +1,6 @@
 # demothymeleaf
 
-*Post a form
+*Post a form*
 
 <form action="#" th:action="@{/clients}" th:object="${clientDto}" method="post">
 
@@ -12,7 +12,7 @@ th:object must be used with a variable experssion ${clientDto} pointing to form 
 
 
 
-*Add an input to a form
+*Add an input to a form*
 
 <input type="text" th:field="*{email}"/> 
 
