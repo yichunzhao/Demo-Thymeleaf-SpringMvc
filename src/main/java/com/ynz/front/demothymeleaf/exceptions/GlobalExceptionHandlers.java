@@ -1,6 +1,7 @@
 package com.ynz.front.demothymeleaf.exceptions;
 
 import com.ynz.front.demothymeleaf.dto.ClientDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -13,25 +14,24 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.toList;
 
 @ControllerAdvice
+@Slf4j
 public class GlobalExceptionHandlers {
 
     @ExceptionHandler
     public String handleExceptions(Exception e, Model model) {
+        log.error(e.getMessage());
+
         List<String> errors = Stream.of(e.getMessage()).collect(toList());
         model.addAttribute("errs", errors);
         return "error";
     }
 
-//    @ExceptionHandler(BindException.class)
-//    public String handleBindException(BindException e, Model model) {
-//        List<String> errors = e.getAllErrors().stream().map(objectError -> objectError.getDefaultMessage()).collect(toList());
-//        model.addAttribute("errs", errors);
-//        return "error";
-//    }
-
     @ExceptionHandler(DataIntegrityViolationException.class)
     public String handleDataIntegrityViolationException(DataIntegrityViolationException e, Model model) {
-        List<String> errors = Stream.of(e.getMessage()).collect(toList());
+        log.warn(e.getMessage());
+        String errMsg = "The persisted entity is already existed.";
+
+        List<String> errors = Stream.of(errMsg).collect(toList());
         model.addAttribute("errs", errors);
         return "error";
     }
