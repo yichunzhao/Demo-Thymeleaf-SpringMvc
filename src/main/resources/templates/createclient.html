@@ -61,12 +61,14 @@
                 <td align="right"><input type="submit" name="submit" value="Submit"></td>
             </tr>
         </table>
+
+        <div th:if="${#fields.hasGlobalErrors()}">
+            <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+        </div>
+
     </form>
 </div>
 
-<div th:if="${#fields.hasGlobalErrors()}">
-    <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-</div>
 
 <div>
     <a href="/">Go Back Home</a>

@@ -1,5 +1,6 @@
 package com.ynz.front.demothymeleaf.dto;
 
+import com.ynz.front.demothymeleaf.mapper.Dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +13,7 @@ import javax.validation.constraints.Size;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ClientDto {
+public class ClientDto implements Dto {
     @NotBlank(message = "First name is mandatory")
     @Size(min = 3, max = 25, message = "First name length must be less than 25 and bigger than 3")
     private String firstName;

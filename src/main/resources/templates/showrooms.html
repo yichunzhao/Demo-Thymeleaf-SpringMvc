@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rooms</title>
+</head>
+<body>
+<H1>Rooms</H1>
+
+
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th><span th:text="#{label.room.name}"></span></th>
+            <th><span th:text="#{label.room.num}"></span></th>
+            <th><span th:text="#{label.room.info}"></span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="room:${rooms}">
+            <td>
+                <span th:text="${room.name}"></span>
+            </td>
+            <td>
+                <span th:text="${room.roomNum}"></span>
+            </td>
+            <td>
+                <span th:text="${room.bedInfo}"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div>
+    <a href="/">Go Back Home</a>
+</div>
+
+
+</body>
+</html>

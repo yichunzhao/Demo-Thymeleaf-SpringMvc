@@ -1,29 +1,32 @@
 package com.ynz.front.demothymeleaf.Entities;
 
+import com.ynz.front.demothymeleaf.mapper.Domain;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "CLIENT")
 @Getter
 @Setter
 @NoArgsConstructor
-public class Client {
+public class Client implements Domain {
     @Id
     @GeneratedValue
+    @Column(name = "ID", nullable = false, updatable = false)
     private Long id;
 
+    @Column(name = "First_Name")
     private String firstName;
+
+    @Column(name = "Last_Name")
     private String lastName;
 
-    @Column(unique = true)
+    @Column(name = "EMAIL", unique = true)
     private String email;
 
-    @Column(unique = true)
+    @Column(name = "PHONE_NUM", unique = true)
     private String phone;
 }
