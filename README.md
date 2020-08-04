@@ -9,7 +9,6 @@ A static View is presented in HTML, it may dynamically interact with controller 
 It commit user input via a Controller.  
 
 `<form action="#" th:action="@{/clients}" th:object="${clientDto}" method="post">
-
 </form>`
 
 Attributes:
