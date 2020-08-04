@@ -1,7 +1,6 @@
 package com.ynz.front.demothymeleaf.controllers;
 
 import com.ynz.front.demothymeleaf.Entities.Client;
-import com.ynz.front.demothymeleaf.Entities.Room;
 import com.ynz.front.demothymeleaf.dto.ClientDto;
 import com.ynz.front.demothymeleaf.dto.RoomDto;
 import com.ynz.front.demothymeleaf.mapper.ClientMapper;
@@ -62,10 +61,8 @@ public class FrontController {
 
     @GetMapping("showrooms")
     public String getAllRooms(Model model) {
-        Mapper<Room, RoomDto> mapper = RoomMapper.instance();
-
         List<RoomDto> roomDtoList = new ArrayList<>();
-        roomRepository.findAll().forEach(room -> roomDtoList.add(mapper.map(room)));
+        roomRepository.findAll().forEach(room -> roomDtoList.add(RoomMapper.instance().map(room)));
 
         model.addAttribute("rooms", roomDtoList);
         return "showrooms";
