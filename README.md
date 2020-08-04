@@ -12,9 +12,9 @@ It commit user input via a Controller.
 
 Attributes:
 
-th:action must be used with a link to uri expression `@{/clients}`, pointing to controller method handler. 
+`th:action` must be used with a link to uri expression `@{/clients}`, pointing to controller method handler. 
 
-th:object must be used with a variable experssion `${clientDto}` pointing to form backing bean name(instance variable name).
+`th:object` must be used with a variable experssion `${clientDto}` pointing to form backing bean name, i.e. Model. 
 
 method: one of http method. 
 
