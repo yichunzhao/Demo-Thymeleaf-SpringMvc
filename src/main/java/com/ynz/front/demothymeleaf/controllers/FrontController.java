@@ -53,11 +53,7 @@ public class FrontController {
             return "createclient";
         }
 
-        Client client = new Client();
-        client.setFirstName(clientDto.getFirstName());
-        client.setLastName(clientDto.getLastName());
-        client.setPhone(clientDto.getPhone());
-        client.setEmail(clientDto.getEmail());
+        Client client = ClientMapper.instance().invert(clientDto);
         clientRepository.save(client);
 
         model.addAttribute("name", client.getFirstName() + " " + client.getLastName());

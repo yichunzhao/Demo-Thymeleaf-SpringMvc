@@ -11,4 +11,13 @@ public class RoomMapper implements Mapper<Room, RoomDto> {
     public RoomDto map(Room room) {
         return RoomDto.builder().name(room.getName()).bedInfo(room.getBedInfo()).roomNum(room.getRoomNum()).build();
     }
+
+    @Override
+    public Room invert(RoomDto roomDto) {
+        Room room = new Room();
+        room.setBedInfo(roomDto.getBedInfo());
+        room.setName(roomDto.getName());
+        room.setRoomNum(roomDto.getRoomNum());
+        return room;
+    }
 }

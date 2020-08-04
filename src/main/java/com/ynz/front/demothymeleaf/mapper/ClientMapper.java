@@ -15,4 +15,14 @@ public class ClientMapper implements Mapper<Client, ClientDto> {
                 .email(client.getEmail())
                 .phone(client.getPhone()).build();
     }
+
+    @Override
+    public Client invert(ClientDto clientDto) {
+        Client client = new Client();
+        client.setEmail(clientDto.getEmail());
+        client.setFirstName(clientDto.getFirstName());
+        client.setLastName(clientDto.getLastName());
+        client.setPhone(clientDto.getPhone());
+        return client;
+    }
 }
