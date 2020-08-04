@@ -33,6 +33,7 @@ Attributes:
 
 `th:field` musts be used with a selection variable expression `*{email}`, which mapping the current field to the Model attribute(property).
 
+
 *Form validation and erro messages*
 
 A form input may need a validation, and show error message alone with the fields. 
