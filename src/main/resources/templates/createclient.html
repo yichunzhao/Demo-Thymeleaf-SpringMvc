@@ -64,6 +64,10 @@
     </form>
 </div>
 
+<div th:if="${#fields.hasGlobalErrors()}">
+    <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+</div>
+
 <div>
     <a href="/">Go Back Home</a>
 </div>
