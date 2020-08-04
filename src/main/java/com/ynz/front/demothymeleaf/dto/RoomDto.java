@@ -1,6 +1,6 @@
 package com.ynz.front.demothymeleaf.dto;
 
-import com.ynz.front.demothymeleaf.mapper.Dto;
+import com.ynz.front.demothymeleaf.mapper.Presentable;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RoomDto implements Dto {
+public class RoomDto implements Presentable {
     private String name;
     private String roomNum;
     private String bedInfo;

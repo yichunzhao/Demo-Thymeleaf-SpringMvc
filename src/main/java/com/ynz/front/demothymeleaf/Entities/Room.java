@@ -1,6 +1,6 @@
 package com.ynz.front.demothymeleaf.Entities;
 
-import com.ynz.front.demothymeleaf.mapper.Domain;
+import com.ynz.front.demothymeleaf.mapper.Persistable;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "ROOM")
 @Getter
 @Setter
-public class Room implements Domain {
+public class Room implements Persistable {
     @Id
     @GeneratedValue
     @Column(name = "ROOM_ID")
