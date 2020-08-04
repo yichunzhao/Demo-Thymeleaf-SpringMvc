@@ -16,6 +16,8 @@ th:action must be used with a link to uri expression `@{/clients}`, pointing to 
 
 th:object must be used with a variable experssion `${clientDto}` pointing to form backing bean name(instance variable name).
 
+method: one of http method. 
+
 
 *Add an text input to a form*
 
