@@ -23,9 +23,11 @@ method: one of http method.
 
 `<input type="text" th:field="*{email}"/>`
 
-the above is a shortcut, which is equal to 
+the above is a shortcut, which is similar to 
 
 `<input type="text" id="email" name="email" th:value="*{email}"/>`
+
+but actually more than the above, `th:text="*{}"` applying the dataformatters that having been regsitered in the Spring, thus the data can be displyed correctly. 
 
 Attributes: 
 
