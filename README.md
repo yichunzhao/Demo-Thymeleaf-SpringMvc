@@ -48,6 +48,32 @@ Attributes:
 
 `th:errors="*{firstName}`  showing a list of errors associated with the field.  
 
+*Fragment*
+
+A fragment defines a common view that can be included in many other views. 
+
+Frgaments can be put in an independent html file, with th xml name space. 
+
+```
+   <div th:fragment="navBar">
+    <nav role="navigation" aria-label="main menu">
+        <a href="/">Home</a>|
+        <a href="/createclient">Create Client</a>|
+        <a href="/showclients">Show Existing Clients</a>|
+        <a href="/showrooms">Show Rooms</a>
+    </nav>
+</div>
+```
+
+Using `th:replace=fragments.html::navBar` to reuse it at the point that needs it.
+
+```
+<header>
+    <div th:replace="fragments.html :: navBar"></div>
+</header>
+```
+
+
 
 
 
