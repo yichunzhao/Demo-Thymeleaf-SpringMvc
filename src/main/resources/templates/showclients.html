@@ -2,9 +2,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
     <title>Existing Clients</title>
 </head>
 <body>
+
+<header>
+    <div th:replace="fragments.html :: navBar"> </div>
+</header>
 
 <h1>Existing Clients</h1>
 
@@ -29,9 +34,10 @@
     </table>
 </div>
 
-<div>
-    <a href="/">Go Back Home</a>
-</div>
+<footer>
+    <div th:insert="fragments::foot"></div>
+</footer>
+
 
 </body>
 </html>

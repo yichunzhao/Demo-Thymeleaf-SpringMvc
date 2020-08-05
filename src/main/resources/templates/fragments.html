@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div th:fragment="navBar">
+    <nav role="navigation" aria-label="main menu">
+        <a href="/">Home</a>|
+        <a href="/createclient">Create Client</a>|
+        <a href="/showclients">Show Existing Clients</a>|
+        <a href="/showrooms">Show Rooms</a>
+    </nav>
+</div>
+
+<div th:fragment="foot">
+    <hr>
+    <P>
+        Phone: 9999 8888 <br>
+    </P>
+</div>
+
+</body>
+</html>

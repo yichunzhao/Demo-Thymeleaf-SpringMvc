@@ -6,6 +6,10 @@
 </head>
 <body>
 
+<header>
+    <div th:replace="fragments.html :: navBar"> </div>
+</header>
+
 <h1>Create New Client</h1>
 
 <div>
@@ -14,10 +18,10 @@
         <table>
             <tr>
                 <td>
-                    <label th:text="#{label.firstName}"></label>
+                    <label for="firstName" th:text="#{label.firstName}"></label>
                 </td>
                 <td>
-                    <input type="text" th:field="*{firstName}" class="small" th:errorclass="fieldError">
+                    <input type="text" th:field="*{firstName}" class="small" th:errorclass="fieldError" id="firstName">
                 </td>
                 <td>
                     <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Incorrect date</span>
@@ -25,10 +29,10 @@
             </tr>
             <tr>
                 <td>
-                    <label th:text="#{label.lastName}"></label>
+                    <label for="lastName" th:text="#{label.lastName}"></label>
                 </td>
                 <td>
-                    <input type="text" th:field="*{lastName}" class="small" th:errorclass="fieldError">
+                    <input type="text" th:field="*{lastName}" class="small" th:errorclass="fieldError" id="lastName">
                 </td>
                 <td>
                     <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Incorrect date</span>
@@ -36,11 +40,11 @@
             </tr>
             <tr>
                 <td>
-                    <label th:text="#{label.email}"></label>
+                    <label for="email" th:text="#{label.email}"></label>
                 </td>
 
                 <td>
-                    <input type="text" th:field="*{email}" class="small" th:errorclass="fieldError">
+                    <input type="text" th:field="*{email}" class="small" th:errorclass="fieldError" id="email">
                 </td>
                 <td>
                     <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect date</span>
@@ -48,9 +52,9 @@
             </tr>
 
             <tr>
-                <td><label th:text="#{label.phone}"></label></td>
+                <td><label for="phone" th:text="#{label.phone}"></label></td>
                 <td>
-                    <input type="text" th:field="*{phone}" class="small" th:errorclass="fieldError">
+                    <input type="text" th:field="*{phone}" class="small" th:errorclass="fieldError" id="phone">
                 </td>
                 <td>
                     <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Incorrect date</span>
@@ -70,9 +74,9 @@
 </div>
 
 
-<div>
-    <a href="/">Go Back Home</a>
-</div>
+<footer>
+    <div th:insert="fragments::foot"></div>
+</footer>
 
 
 </body>

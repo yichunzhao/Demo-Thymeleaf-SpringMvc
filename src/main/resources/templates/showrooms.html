@@ -5,8 +5,12 @@
     <title>Rooms</title>
 </head>
 <body>
-<H1>Rooms</H1>
 
+<header>
+    <div th:replace="fragments.html :: navBar"></div>
+</header>
+
+<H1>Rooms</H1>
 
 <div>
     <table>
@@ -34,10 +38,10 @@
 
 </div>
 
-<div>
-    <a href="/">Go Back Home</a>
-</div>
 
+<footer>
+    <div th:insert="fragments::foot"></div>
+</footer>
 
 </body>
 </html>

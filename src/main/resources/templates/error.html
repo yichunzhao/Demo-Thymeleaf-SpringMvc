@@ -6,6 +6,10 @@
 </head>
 <body>
 
+<header>
+    <div th:replace="fragments.html :: navBar"> </div>
+</header>
+
 <h1>Error Page</h1>
 
 <div>
@@ -18,6 +22,10 @@
     </table>
 
 </div>
+
+<footer>
+    <div th:insert="fragments::foot"></div>
+</footer>
 
 </body>
 </html>

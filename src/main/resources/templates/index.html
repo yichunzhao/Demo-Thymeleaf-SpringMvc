@@ -7,21 +7,17 @@
 <body>
 
 <header>
-    <img src="/images/hotel-logo.png" width="500" height="425" alt="happy-dog-hotel">
-
-    <h1><span th:text="#{welcome.message}"></span></h1>
-
-    <div>
-        <nav role="navigation" aria-label="main menu">
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/createclient">Create Client</a></li>
-                <li><a href="/showclients">Show Existing Clients</a></li>
-                <li><a href="/showrooms">Show Rooms</a></li>
-            </ul>
-        </nav>
-    </div>
+    <div th:replace="fragments.html :: navBar"></div>
 </header>
+
+<div>
+    <img src="/images/hotel-logo.png" width="500" height="425" alt="happy-dog-hotel">
+    <h1><span th:text="#{welcome.message}"></span></h1>
+</div>
+
+<footer>
+    <div th:insert="fragments::foot"></div>
+</footer>
 
 </body>
 </html>
