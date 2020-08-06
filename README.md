@@ -52,7 +52,7 @@ Attributes:
 
 A fragment defines a common view that can be included in many other views. 
 
-Frgaments can be put in an independent html file, with th xml name space. 
+Frgaments can be put in an independent html file. 
 
 ```
 <div th:fragment="navBar">
