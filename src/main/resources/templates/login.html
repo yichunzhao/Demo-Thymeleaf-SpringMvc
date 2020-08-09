@@ -6,6 +6,8 @@
     <div th:replace="fragments :: com-head"></div>
 </head>
 
+<body>
+
 <header>
     <div th:replace="fragments :: navBar"></div>
 </header>
@@ -13,41 +15,44 @@
 <p>
 <h1>Login in </h1>
 </p>
-<table>
-    <tbody>
-    <tr>
-        <td>
-            <label for="userName">Username: </label>
-        </td>
-        <td>
-            <input type="text" name="userName" id="userName">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <label for="pwd">Password: </label>
-        </td>
-        <td>
-            <input type="text" name="password" id="pwd">
-        </td>
-    </tr>
-    <tr>
-        <td>
 
-        </td>
-        <td align="right">
-            <input type="submit" name="submit" value="Login">
-        </td>
-    </tr>
-    </tbody>
-</table>
-<a href="/createclient">Register as a new user</a>
+<P>
+<form action="#" th:action="@{/submitLogin} " th:object="${login}" method="post">
+    <table>
+        <tbody>
+        <tr>
+            <td>
+                <label for="userName">Username: </label>
+            </td>
+            <td>
+                <input type="text" name="userName" id="userName" th:text="${login.userName}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="pwd">Password: </label>
+            </td>
+            <td>
+                <input type="text" name="password" id="pwd" th:text="${login.password}">
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td align="right">
+                <input type="submit" name="submit" value="Login">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</P>
+
 <p>
-
+    <a href="/createclient">Register as a new user</a>
 </p>
 
-
-<body>
 
 </body>
 </html>

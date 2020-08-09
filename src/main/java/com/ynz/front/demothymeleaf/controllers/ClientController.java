@@ -2,12 +2,9 @@ package com.ynz.front.demothymeleaf.controllers;
 
 import com.ynz.front.demothymeleaf.Entities.Client;
 import com.ynz.front.demothymeleaf.dto.ClientDto;
-import com.ynz.front.demothymeleaf.dto.RoomDto;
 import com.ynz.front.demothymeleaf.mapper.ClientMapper;
 import com.ynz.front.demothymeleaf.mapper.Mapper;
-import com.ynz.front.demothymeleaf.mapper.RoomMapper;
 import com.ynz.front.demothymeleaf.repositories.ClientRepository;
-import com.ynz.front.demothymeleaf.repositories.RoomRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,19 +19,8 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public class FrontController {
+public class ClientController {
     private final ClientRepository clientRepository;
-    private final RoomRepository roomRepository;
-
-    @GetMapping("/")
-    public String home() {
-        return "index";
-    }
-
-    @GetMapping("login")
-    public String login() {
-        return "login";
-    }
 
     @GetMapping("/createclient")
     public String createClient() {
@@ -62,15 +48,6 @@ public class FrontController {
 
         model.addAttribute("name", client.getFirstName() + " " + client.getLastName());
         return "index";
-    }
-
-    @GetMapping("showrooms")
-    public String getAllRooms(Model model) {
-        List<RoomDto> roomDtoList = new ArrayList<>();
-        roomRepository.findAll().forEach(room -> roomDtoList.add(RoomMapper.instance().map(room)));
-
-        model.addAttribute("rooms", roomDtoList);
-        return "showrooms";
     }
 
 }

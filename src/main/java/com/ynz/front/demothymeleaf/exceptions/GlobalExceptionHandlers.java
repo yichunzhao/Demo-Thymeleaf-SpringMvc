@@ -1,5 +1,6 @@
 package com.ynz.front.demothymeleaf.exceptions;
 
+import com.ynz.front.demothymeleaf.backingbeans.Login;
 import com.ynz.front.demothymeleaf.dto.ClientDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -19,7 +20,7 @@ public class GlobalExceptionHandlers {
 
     @ExceptionHandler
     public String handleExceptions(Exception e, Model model) {
-        log.error(e.getMessage());
+        log.error(e.getMessage(), e);
 
         List<String> errors = Stream.of(e.getMessage()).collect(toList());
         model.addAttribute("errs", errors);
@@ -39,6 +40,11 @@ public class GlobalExceptionHandlers {
     @ModelAttribute
     public ClientDto clientDto() {
         return new ClientDto();
+    }
+
+    @ModelAttribute
+    public Login login() {
+        return new Login();
     }
 
 }
