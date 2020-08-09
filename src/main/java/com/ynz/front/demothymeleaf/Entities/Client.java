@@ -14,7 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Client implements Persistable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false, updatable = false)
     private Long id;
 

@@ -8,6 +8,7 @@ import lombok.Setter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -18,8 +19,8 @@ import javax.persistence.Table;
 @Setter
 public class Room implements Persistable {
     @Id
-    @GeneratedValue
-    @Column(name = "ROOM_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", updatable = false)
     @Setter(AccessLevel.NONE)
     private Long id;
 

@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Create New Client</title>
+    <div th:replace="fragments :: com-head"></div>
 </head>
 <body>
 
 <header>
-    <div th:replace="fragments :: navBar"> </div>
+    <div th:replace="fragments :: navBar"></div>
 </header>
 
 <h1>Create New Client</h1>
@@ -44,7 +45,7 @@
                 </td>
 
                 <td>
-                    <input type="text" th:field="*{email}" class="small" th:errorclass="fieldError" id="email">
+                    <input type="email" th:field="*{email}" class="small" th:errorclass="fieldError" id="email">
                 </td>
                 <td>
                     <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Incorrect date</span>
@@ -54,7 +55,7 @@
             <tr>
                 <td><label for="phone" th:text="#{label.phone}"></label></td>
                 <td>
-                    <input type="text" th:field="*{phone}" class="small" th:errorclass="fieldError" id="phone">
+                    <input type="tel" th:field="*{phone}" class="small" th:errorclass="fieldError" id="phone">
                 </td>
                 <td>
                     <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}">Incorrect date</span>
