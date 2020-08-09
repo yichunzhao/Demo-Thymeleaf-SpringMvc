@@ -31,6 +31,11 @@ public class FrontController {
         return "index";
     }
 
+    @GetMapping("login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/createclient")
     public String createClient() {
         return "createclient";
