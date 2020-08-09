@@ -52,10 +52,10 @@ Attributes:
 
 A fragment defines a common view that can be included in many other views. 
 
-Frgaments can be put in an independent html file, with th xml name space. 
+Frgaments can be put in an independent html file. 
 
 ```
-   <div th:fragment="navBar">
+<div th:fragment="navBar">
     <nav role="navigation" aria-label="main menu">
         <a href="/">Home</a>|
         <a href="/createclient">Create Client</a>|
