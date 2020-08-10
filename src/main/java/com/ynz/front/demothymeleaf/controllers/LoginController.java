@@ -35,15 +35,4 @@ public class LoginController {
 
     }
 
-//    @PostMapping("/login")
-//    public String submitLogin(@ModelAttribute Login login) {
-//        log.info("Accept login : " + login.toString());
-//
-//        //if it fails to login, then go to a page showing error
-//
-//        //if login is successful, then go to a page showing all rooms
-//        return "redirect:/showrooms";
-//    }
-
-
 }
