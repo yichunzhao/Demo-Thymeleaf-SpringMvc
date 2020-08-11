@@ -37,14 +37,5 @@ public class GlobalExceptionHandlers {
         return "error";
     }
 
-    @ModelAttribute
-    public ClientDto clientDto() {
-        return new ClientDto();
-    }
-
-    @ModelAttribute
-    public Login login() {
-        return new Login();
-    }
 
 }
