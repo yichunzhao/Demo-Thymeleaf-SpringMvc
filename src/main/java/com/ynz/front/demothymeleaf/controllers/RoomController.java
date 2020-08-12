@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -25,16 +26,16 @@ public class RoomController {
     private final ClientRepository clientRepository;
 
     @GetMapping("/showrooms")
-    public String getAllRooms(@SessionAttribute("login") Login login, Model model, HttpSession session) {
+    public String getAllRooms(@SessionAttribute("login") Login login, Model model, HttpSession session, SessionStatus status) {
         List<RoomDto> roomDtoList = new ArrayList<>();
         roomRepository.findAll().forEach(room -> roomDtoList.add(RoomMapper.instance().map(room)));
         model.addAttribute("rooms", roomDtoList);
 
         String clientName = clientRepository.findByEmail(login.getLoginName())
                 .orElseThrow(() -> new NotFoundException(login.getLoginName() + " is not found!")).getFirstName();
-
         model.addAttribute("loginName", clientName);
-        //status.setComplete();
+        
+        status.setComplete();
         return "showrooms";
     }
 

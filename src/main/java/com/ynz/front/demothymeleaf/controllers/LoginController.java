@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -23,13 +24,15 @@ public class LoginController {
     private UserDetailServiceImpl detailService;
 
     @GetMapping("/login")
-    public String login() {
+    public String login(SessionStatus sessionStatus) {
+        if (sessionStatus != null) sessionStatus.setComplete();
         log.info("Show login page.");
         return "login";
     }
 
     @PostMapping("/submitLogin")
     public String submitLogin(@Valid @ModelAttribute Login login, BindingResult result, Model model, HttpSession session) {
+
         log.info("Accept login : " + login.toString());
 
         if (result.hasErrors()) {
