@@ -3,6 +3,7 @@ package com.ynz.front.demothymeleaf.Entities;
 import com.ynz.front.demothymeleaf.mapper.Persistable;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import javax.persistence.Table;
 @Table(name = "ROOM")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Room implements Persistable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

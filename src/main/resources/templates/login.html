@@ -13,7 +13,7 @@
 </header>
 
 <p>
-<h1>Login in </h1>
+<h1>Login In</h1>
 </p>
 
 <P>
@@ -71,7 +71,6 @@
         </tr>
         <tr>
             <td>
-
             </td>
             <td align="right">
                 <input type="submit" name="submit" value="Login">
@@ -87,11 +86,11 @@
     <a href="/createclient">Register as a new user</a>
 </p>
 
-<div>
+<div class="error">
     <span th:text="${err}"> </span>
 </div>
 
-
+<div th:replace="fragments::foot"></div>
 
 </body>
 </html>

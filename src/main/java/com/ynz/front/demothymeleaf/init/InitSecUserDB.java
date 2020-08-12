@@ -1,5 +1,7 @@
-package com.ynz.front.demothymeleaf.security;
+package com.ynz.front.demothymeleaf.init;
 
+import com.ynz.front.demothymeleaf.security.UserSecDetailRepository;
+import com.ynz.front.demothymeleaf.security.UserSecurityDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
@@ -17,7 +19,7 @@ public class InitSecUserDB implements CommandLineRunner {
     public void run(String... args) throws Exception {
         UserSecurityDetails defaultUser = new UserSecurityDetails();
         defaultUser.setPassword(encoder.encode("test"));
-        defaultUser.setUserName("test");
+        defaultUser.setLoginName("test");
         defaultUser.setAccountNonExpired(true);
         defaultUser.setCredentialsNonExpired(true);
         defaultUser.setEnabled(true);

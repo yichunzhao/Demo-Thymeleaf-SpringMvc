@@ -8,5 +8,5 @@ import java.util.Optional;
 
 @Repository
 public interface UserSecDetailRepository extends CrudRepository<UserSecurityDetails, Long> {
-    Optional<UserDetails> findByUserName(String userName);
+    Optional<UserDetails> findByLoginName(String userName);
 }

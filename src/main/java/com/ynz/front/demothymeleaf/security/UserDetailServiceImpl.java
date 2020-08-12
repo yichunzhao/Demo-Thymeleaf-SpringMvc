@@ -22,7 +22,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         Optional.ofNullable(userName).orElseThrow(() -> new IllegalArgumentException("Must provide a user name"));
-        return userSecDetailRepository.findByUserName(userName)
+        return userSecDetailRepository.findByLoginName(userName)
                 .orElseThrow(() -> new UsernameNotFoundException(userName + " is not found."));
     }
 

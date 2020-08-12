@@ -13,7 +13,8 @@ public class ClientMapper implements Mapper<Client, ClientDto> {
                 .firstName(client.getFirstName())
                 .lastName(client.getLastName())
                 .email(client.getEmail())
-                .phone(client.getPhone()).build();
+                .phone(client.getPhone())
+                .build();
     }
 
     @Override

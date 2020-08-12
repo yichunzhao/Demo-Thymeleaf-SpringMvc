@@ -1,10 +1,12 @@
 package com.ynz.front.demothymeleaf.dto;
 
 import com.ynz.front.demothymeleaf.mapper.Presentable;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -28,4 +30,9 @@ public class ClientDto implements Presentable {
     @NotBlank(message = "Phone number is mandatory")
     @Size(min = 8, max = 8, message = "Phone must contain 8 digits.")
     private String phone;
+
+    @NotBlank(message = "Password is mandatory.")
+    @Size(min = 4, max = 128, message = "Password at least contains 4 characters.")
+    private String password;
+
 }

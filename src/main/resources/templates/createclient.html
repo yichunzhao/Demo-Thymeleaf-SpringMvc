@@ -13,7 +13,9 @@
 
 <h1>Create New Client</h1>
 
+
 <div>
+
     <form action="#" th:action="@{/clients}" th:object="${clientDto}" method="post">
 
         <table>
@@ -62,6 +64,15 @@
                 </td>
             </tr>
             <tr>
+                <td><label for="pwd" th:text="#{label.password}"></label></td>
+                <td>
+                    <input type="password" th:field="*{password}" class="small" th:errorclass="fieldError" id="pwd">
+                </td>
+                <td>
+                    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect date</span>
+                </td>
+            </tr>
+            <tr>
                 <td></td>
                 <td align="right"><input type="submit" name="submit" value="Submit"></td>
             </tr>
@@ -72,13 +83,10 @@
         </div>
 
     </form>
+
 </div>
 
-
-<footer>
-    <div th:insert="fragments::foot"></div>
-</footer>
-
+<div th:replace="fragments::foot"></div>
 
 </body>
 </html>

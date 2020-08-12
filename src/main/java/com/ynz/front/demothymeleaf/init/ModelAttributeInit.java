@@ -4,10 +4,11 @@ import com.ynz.front.demothymeleaf.backingbeans.Login;
 import com.ynz.front.demothymeleaf.controllers.ClientController;
 import com.ynz.front.demothymeleaf.controllers.LoginController;
 import com.ynz.front.demothymeleaf.dto.ClientDto;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
-@ControllerAdvice(assignableTypes = {LoginController.class, ClientController.class})
+@ControllerAdvice(assignableTypes = {LoginController.class, ClientController.class}, annotations = Controller.class)
 public class ModelAttributeInit {
 
     @ModelAttribute

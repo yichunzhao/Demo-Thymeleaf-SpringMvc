@@ -5,7 +5,10 @@ import com.ynz.front.demothymeleaf.dto.ClientDto;
 import com.ynz.front.demothymeleaf.mapper.ClientMapper;
 import com.ynz.front.demothymeleaf.mapper.Mapper;
 import com.ynz.front.demothymeleaf.repositories.ClientRepository;
+import com.ynz.front.demothymeleaf.security.UserSecDetailRepository;
+import com.ynz.front.demothymeleaf.security.UserSecurityDetails;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +24,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ClientController {
     private final ClientRepository clientRepository;
+    private final UserSecDetailRepository userSecDetailRepository;
+    private final PasswordEncoder encoder;
 
     @GetMapping("/createclient")
     public String createClient() {
@@ -43,8 +48,16 @@ public class ClientController {
             return "createclient";
         }
 
+        //create an user
         Client client = ClientMapper.instance().invert(clientDto);
         clientRepository.save(client);
+
+        //create user's security details
+        UserSecurityDetails userSecurityDetails = UserSecurityDetails.builder().loginName(clientDto.getEmail())
+                .password(encoder.encode(clientDto.getPassword())).accountNonExpired(true).accountNonLocked(true)
+                .credentialsNonExpired(true).enabled(true).build();
+
+        userSecDetailRepository.save(userSecurityDetails);
 
         model.addAttribute("name", client.getFirstName() + " " + client.getLastName());
         return "index";

@@ -7,18 +7,14 @@
 </head>
 <body>
 
-<header>
-    <div th:replace="fragments :: navBar"></div>
-</header>
+<div th:replace="fragments :: navBar"></div>
 
 <div>
     <img src="/images/hotel-logo.png" width="500" height="425" alt="happy-dog-hotel">
     <h1><span th:text="#{welcome.message}"></span></h1>
 </div>
 
-<footer>
-    <div th:insert="fragments::foot"></div>
-</footer>
+<div th:replace="fragments::foot"></div>
 
 </body>
 </html>
