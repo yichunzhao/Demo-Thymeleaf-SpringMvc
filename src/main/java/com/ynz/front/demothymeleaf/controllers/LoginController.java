@@ -10,11 +10,14 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
 @Slf4j
+@SessionAttributes("login")
 public class LoginController {
     @Autowired
     private UserDetailServiceImpl detailService;
@@ -26,18 +29,21 @@ public class LoginController {
     }
 
     @PostMapping("/submitLogin")
-    public String submitLogin(@Valid @ModelAttribute Login login, BindingResult result, Model model) {
+    public String submitLogin(@Valid @ModelAttribute Login login, BindingResult result, Model model, HttpSession session) {
         log.info("Accept login : " + login.toString());
+
         if (result.hasErrors()) {
             return "login";
         }
 
-        if (detailService.match(login)) {
-            return "redirect:/showrooms";
-        } else {
+        if (!detailService.match(login)) {
             model.addAttribute("err", "UserName or Password is wrong");
             return "login";
         }
+
+        session.setMaxInactiveInterval(30);
+
+        return "redirect:/showrooms";
 
     }
 

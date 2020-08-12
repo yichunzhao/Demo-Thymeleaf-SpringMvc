@@ -28,7 +28,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     public boolean match(Login login) {
         Optional.ofNullable(login).orElseThrow(() -> new IllegalArgumentException("Must provide a Login instance"));
-        String encodedPwd = loadUserByUsername(login.getUserName()).getPassword();
+        String encodedPwd = loadUserByUsername(login.getLoginName()).getPassword();
         return passwordEncoder.matches(login.getPassword(), encodedPwd);
     }
 }

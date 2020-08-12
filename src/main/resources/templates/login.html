@@ -16,7 +16,7 @@
 <h1>Login In</h1>
 </p>
 
-<P>
+<p>
 <form action="#" th:action="@{/submitLogin} " th:object="${login}" method="post">
     <table>
         <tbody>
@@ -25,10 +25,10 @@
                 <label for="userName">Username: </label>
             </td>
             <td>
-                <input type="text" name="userName" id="userName" th:text="${login.userName}" th:errorclass="fieldError">
+                <input type="text" name="loginName" id="userName" th:text="${login.loginName}" th:errorclass="fieldError">
             </td>
             <td>
-                <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">Incorrect date</span>
+                <span th:if="${#fields.hasErrors('loginName')}" th:errors="*{loginName}">Incorrect date</span>
             </td>
         </tr>
         <tr>
@@ -49,11 +49,14 @@
             <td align="right">
                 <input type="submit" name="submit" value="Login">
             </td>
+            <td>
+
+            </td>
         </tr>
         </tbody>
     </table>
 </form>
-</P>
+</p>
 
 <p>
     <a href="/createclient">Register as a new user</a>
