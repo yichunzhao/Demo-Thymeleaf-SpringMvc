@@ -21,14 +21,19 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        Optional.ofNullable(userName).orElseThrow(() -> new IllegalArgumentException("Must provide a user name"));
+        Optional.ofNullable(userName).orElseThrow(() -> new IllegalArgumentException("UserName is null"));
+
         return userSecDetailRepository.findByLoginName(userName)
-                .orElseThrow(() -> new UsernameNotFoundException(userName + " is not found."));
+                .orElse(null);
     }
 
     public boolean match(Login login) {
         Optional.ofNullable(login).orElseThrow(() -> new IllegalArgumentException("Must provide a Login instance"));
-        String encodedPwd = loadUserByUsername(login.getLoginName()).getPassword();
+
+        UserDetails found = loadUserByUsername(login.getLoginName());
+        if (found == null) return false;
+
+        String encodedPwd = found.getPassword();
         return passwordEncoder.matches(login.getPassword(), encodedPwd);
     }
 }

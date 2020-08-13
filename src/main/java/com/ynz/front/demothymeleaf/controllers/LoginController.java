@@ -18,7 +18,7 @@ import javax.validation.Valid;
 
 @Controller
 @Slf4j
-@SessionAttributes("login")
+@SessionAttributes(names = "login")
 public class LoginController {
     @Autowired
     private UserDetailServiceImpl detailService;
