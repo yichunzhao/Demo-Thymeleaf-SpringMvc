@@ -7,9 +7,8 @@
 </head>
 <body>
 
-<div
-        th:replace="fragments :: navBar">
-
+<div th:replace="${#strings.isEmpty(currentUser)} ?
+     ~{fragments :: navBar} : ~{fragments :: navBarLogout}">
 </div>
 
 <div>

@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -18,14 +19,14 @@ import javax.validation.Valid;
 
 @Controller
 @Slf4j
-@SessionAttributes(names = "login")
+@SessionAttributes("login")
 public class LoginController {
     @Autowired
     private UserDetailServiceImpl detailService;
 
     @GetMapping("/login")
-    public String login(SessionStatus sessionStatus) {
-        if (sessionStatus != null) sessionStatus.setComplete();
+    public String login(Model model) {
+        model.addAttribute("currentUser", null);
         log.info("Show login page.");
         return "login";
     }

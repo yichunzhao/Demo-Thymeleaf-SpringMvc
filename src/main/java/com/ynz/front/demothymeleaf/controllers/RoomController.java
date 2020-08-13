@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.support.SessionStatus;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class RoomController {
     private final ClientRepository clientRepository;
 
     @GetMapping("/showrooms")
-    public String getAllRooms(@SessionAttribute("login") Login login, Model model, SessionStatus status) {
+    public String getAllRooms(@SessionAttribute("login") Login login, Model model, SessionStatus status, HttpSession session) {
         List<RoomDto> roomDtoList = new ArrayList<>();
         roomRepository.findAll().forEach(room -> roomDtoList.add(RoomMapper.instance().map(room)));
         model.addAttribute("rooms", roomDtoList);
