@@ -34,7 +34,7 @@ public class RoomController {
                 .orElseThrow(() -> new NotFoundException(login.getLoginName() + " is not found!")).getFirstName();
         model.addAttribute("loginName", clientName);
 
-        status.setComplete();
+        //status.setComplete();
         return "showrooms";
     }
 

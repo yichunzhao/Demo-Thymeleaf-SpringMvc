@@ -14,12 +14,23 @@
         <nav role="navigation" aria-label="main menu">
             <a href="/">Home</a>|
             <a href="/login">Login</a>|
-            <a href="/showclients">Show Existing Clients</a>|
-            <a href="/showrooms">Show Rooms</a>
+            <a href="/showclients">Show Existing Clients</a>
         </nav>
     <hr>
     </p>
 </div>
+
+<div th:fragment="navBarLogout">
+    <p>
+        <nav role="navigation" aria-label="main menu">
+            <a href="/">Home</a>|
+            <a href="/logout">Logout</a>|
+            <a href="/showclients">Show Existing Clients</a>
+        </nav>
+    <hr>
+    </p>
+</div>
+
 
 <div th:fragment="foot">
     <footer>
