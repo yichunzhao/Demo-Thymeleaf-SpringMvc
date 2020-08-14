@@ -26,15 +26,12 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(Model model) {
-        //model.addAttribute("currentUser", null);
-
         log.info("Show login page.");
         return "login";
     }
 
     @PostMapping("/submitLogin")
     public String submitLogin(@Valid @ModelAttribute("login") Login login, BindingResult result, Model model, HttpSession session) {
-
         log.info("Accept login : " + login.toString());
 
         if (result.hasErrors()) {
