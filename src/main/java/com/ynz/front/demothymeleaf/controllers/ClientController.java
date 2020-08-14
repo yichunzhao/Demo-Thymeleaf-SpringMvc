@@ -8,6 +8,7 @@ import com.ynz.front.demothymeleaf.repositories.ClientRepository;
 import com.ynz.front.demothymeleaf.security.UserSecDetailRepository;
 import com.ynz.front.demothymeleaf.security.UserSecurityDetails;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,7 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
+@Slf4j
 public class ClientController {
     private final ClientRepository clientRepository;
     private final UserSecDetailRepository userSecDetailRepository;
@@ -29,11 +31,15 @@ public class ClientController {
 
     @GetMapping("/createclient")
     public String createClient() {
+        log.info("Get createClient page");
+
         return "createclient";
     }
 
     @GetMapping("/showclients")
     public String showClients(Model model) {
+        log.info("Get showClients page");
+
         Mapper<Client, ClientDto> mapper = ClientMapper.instance();
         List<ClientDto> clientDtoList = new ArrayList<>();
         clientRepository.findAll().forEach(client -> clientDtoList.add(mapper.map(client)));
@@ -44,6 +50,8 @@ public class ClientController {
 
     @PostMapping("/clients")
     public String createClient(@Valid @ModelAttribute("clientDto") ClientDto clientDto, BindingResult errors, Model model) {
+        log.info("Post a client form.");
+
         if (errors.hasErrors()) {
             return "createclient";
         }
