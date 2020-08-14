@@ -24,7 +24,6 @@ public class RoomController {
         List<RoomDto> roomDtoList = new ArrayList<>();
         roomRepository.findAll().forEach(room -> roomDtoList.add(RoomMapper.instance().map(room)));
         model.addAttribute("rooms", roomDtoList);
-
         model.addAttribute("loginName", user);
 
         return "showrooms";

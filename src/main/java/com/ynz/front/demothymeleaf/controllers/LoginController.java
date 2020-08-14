@@ -18,7 +18,7 @@ import javax.validation.Valid;
 
 @Controller
 @Slf4j
-@SessionAttributes({"login", "currentUser"})
+@SessionAttributes({"currentUser"})
 @RequiredArgsConstructor
 public class LoginController {
     private final UserDetailServiceImpl detailService;
