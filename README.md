@@ -83,5 +83,7 @@ Else-if syntax and Spel expression to determin which fragment is included in a v
 </div>
 ````
 
+*Thymeleaf expressions*
 
+https://www.baeldung.com/spring-thymeleaf-3-expressions
 
