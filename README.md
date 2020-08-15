@@ -73,8 +73,15 @@ Using `th:replace=fragments.html::navBar` to reuse it at the point that needs it
 </header>
 ```
 
+*conditional fragment inclusion* 
 
+Else-if syntax and Spel expression to determin which fragment is included in a view. 
 
+````
+<div th:replace="${#strings.isEmpty(currentUser)} ?
+     ~{fragments :: navBar} : ~{fragments :: navBarLogout}">
+</div>
+````
 
 
 
