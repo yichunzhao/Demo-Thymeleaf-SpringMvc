@@ -28,6 +28,10 @@ Core interface which loads user-specific security details.
 
 Service interface for encoding password. Normally we use BCryptPasswordEncoder.
 
+*AuthenticationProvider*
+
+Indicate a class that can process Authentication. 
+
 
 
 # Thymeleaf
