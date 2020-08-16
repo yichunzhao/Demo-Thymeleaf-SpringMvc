@@ -20,6 +20,12 @@ reading name password froma Customised login page
 
 User security details is stored in a Relational database
 
+*UserDetailService*
+
+*PasswordEncorder*
+
+
+
  
 
 
