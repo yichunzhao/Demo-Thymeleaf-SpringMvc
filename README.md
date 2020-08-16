@@ -18,17 +18,15 @@ reading name password froma Customised login page
 
 *Storage mechanisms* 
 
-User security details is stored in a Relational database
+User security details is stored in a Relational database.
 
-*UserDetailService*
+*UserDetailsService*
 
-*PasswordEncorder*
+Core interface which loads user-specific security details. 
 
+*PasswordEncoder*
 
-
- 
-
-
+Service interface for encoding password. Normally we use BCryptPasswordEncoder.
 
 
 
