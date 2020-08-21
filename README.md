@@ -1,3 +1,39 @@
+# Formed-based Spring Security using Database
+
+*SecurityContextHolder* 
+
+A `SecuityContextHolder` contains a `SecurityContext`, which cantains an `Authentication` that consists of `Principle`(user), `Credential`(pwd), Authorities(permissions).
+By default the `SecurityContextHolder` uses a ThreadLocal to store a `SecurityContext`, meaning that the `SecurityContext` is always availiable to methods in the same thread, even if the `SecurityContext` is not passed around as an argument to those methods.
+
+It is the place to store the details of who is authenticatd.
+It is the heart of Spring security authentication model, and contains the SecurityContext.
+
+*User-password authentication* 
+
+One of the most common ways to authenticate a user by validating username and password.
+
+*Reading the username and passowrd*
+
+reading name password froma Customised login page
+
+*Storage mechanisms* 
+
+User security details is stored in a Relational database.
+
+*UserDetailsService*
+
+Core interface which loads user-specific security details. 
+
+*PasswordEncoder*
+
+Service interface for encoding password. Normally we use BCryptPasswordEncoder.
+
+*AuthenticationProvider*
+
+Indicate a class that can process Authentication. 
+
+
+
 # Thymeleaf
 
 Thymeleaf is a view framework. It works well with Spring MVC. The key to use it is to link the view, model, and controller together. 
@@ -73,8 +109,17 @@ Using `th:replace=fragments.html::navBar` to reuse it at the point that needs it
 </header>
 ```
 
+*conditional fragment inclusion* 
 
+Else-if syntax and Spel expression to determin which fragment is included in a view. 
 
+````
+<div th:replace="${#strings.isEmpty(currentUser)} ?
+     ~{fragments :: navBar} : ~{fragments :: navBarLogout}">
+</div>
+````
 
+*Thymeleaf expressions*
 
+https://www.baeldung.com/spring-thymeleaf-3-expressions
 
