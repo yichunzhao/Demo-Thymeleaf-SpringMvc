@@ -2,6 +2,7 @@ package com.ynz.front.demothymeleaf.init;
 
 import com.ynz.front.demothymeleaf.Entities.Client;
 import com.ynz.front.demothymeleaf.repositories.ClientRepository;
+import com.ynz.front.demothymeleaf.security.ROLE;
 import com.ynz.front.demothymeleaf.security.UserSecDetailRepository;
 import com.ynz.front.demothymeleaf.security.UserSecurityDetails;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toSet;
 
 @Component
 @ConditionalOnProperty(name = "security.user.init-db", havingValue = "true")
@@ -27,6 +32,7 @@ public class InitSecUserDB implements CommandLineRunner {
         defaultUser.setCredentialsNonExpired(true);
         defaultUser.setEnabled(true);
         defaultUser.setAccountNonLocked(true);
+        defaultUser.setRoles(Stream.of(ROLE.ADMIN, ROLE.USER).collect(toSet()));
         userSecDetailRepository.save(defaultUser);
 
         Client defaultClient = Client.builder().firstName("Mike").lastName("Jones").email("test@test.com")

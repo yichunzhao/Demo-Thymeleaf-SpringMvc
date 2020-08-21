@@ -10,6 +10,8 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,6 +38,7 @@ public class UserSecurityDetails {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "FK_USER_ID"))
+    @Enumerated(EnumType.STRING)
     private Set<ROLE> roles = new HashSet<>();
 
     @Column(name = "ACCOUNT_NON_EXPIRED")
