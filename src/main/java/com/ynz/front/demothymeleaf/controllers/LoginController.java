@@ -1,20 +1,16 @@
 package com.ynz.front.demothymeleaf.controllers;
 
-import com.ynz.front.demothymeleaf.backingbeans.Login;
 import com.ynz.front.demothymeleaf.repositories.ClientRepository;
 import com.ynz.front.demothymeleaf.security.UserDetailServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 @Controller
 @Slf4j
@@ -31,25 +27,7 @@ public class LoginController {
     }
 
     @PostMapping("/submitLogin")
-    public String submitLogin(@Valid @ModelAttribute("login") Login login, BindingResult result, Model model, HttpSession session) {
-        log.info("Accept login : " + login.toString());
-
-        if (result.hasErrors()) {
-            return "login";
-        }
-
-        if (!detailService.match(login)) {
-            model.addAttribute("err", "UserName or Password is wrong");
-            return "login";
-        }
-
-        //login is successful
-        model.addAttribute("currentUser", login.getLoginName());
-
-        //email is the login name
-        String currentUser = clientRepository.findByEmail(login.getLoginName())
-                .map(client -> client.getFirstName()).orElse(null);
-        model.addAttribute("currentUser", currentUser);
+    public String submitLogin(HttpSession session) {
 
         session.setMaxInactiveInterval(30);
 

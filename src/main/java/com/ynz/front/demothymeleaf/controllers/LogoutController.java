@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class LogoutController {
 
-    @GetMapping("logout")
+    @GetMapping("/logout")
     String logout(HttpSession session) {
         log.info("log out and invalidate current session");
 
