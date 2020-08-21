@@ -62,8 +62,7 @@ public class ClientController {
 
         //create user's security details
         UserSecurityDetails userSecurityDetails = UserSecurityDetails.builder().loginName(clientDto.getEmail())
-                .password(encoder.encode(clientDto.getPassword())).accountNonExpired(true).accountNonLocked(true)
-                .credentialsNonExpired(true).enabled(true).build();
+                .password(encoder.encode(clientDto.getPassword())).build();
         userSecDetailRepository.save(userSecurityDetails);
 
         model.addAttribute("name", client.getFirstName() + " " + client.getLastName());
