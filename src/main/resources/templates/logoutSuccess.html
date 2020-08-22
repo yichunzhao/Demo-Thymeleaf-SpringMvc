@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Logout</title>
+    <div th:replace="fragments :: com-head"></div>
+</head>
+<body>
+<div th:replace="${#strings.isEmpty(currentUser)} ?
+     ~{fragments :: navBar} : ~{fragments :: navBarLogout}">
+</div>
+
+
+<div>
+    <img src="/images/hotel-logo.png" width="500" height="425" alt="happy-dog-hotel">
+    <h1>Logout successfully</h1>
+</div>
+
+<div th:replace="fragments::foot"></div>
+
+
+</body>
+</html>

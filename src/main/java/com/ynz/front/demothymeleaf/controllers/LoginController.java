@@ -8,13 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.HttpSession;
 
 @Controller
 @Slf4j
-@SessionAttributes({"currentUser"})
 @RequiredArgsConstructor
 public class LoginController {
     private final UserDetailServiceImpl detailService;
@@ -27,11 +25,19 @@ public class LoginController {
     }
 
     @PostMapping("/submitLogin")
-    public String submitLogin(HttpSession session) {
+    public void submitLogin(HttpSession session) {
+        log.info("handling login submit.");
 
         session.setMaxInactiveInterval(30);
 
-        return "redirect:/showrooms";
+        //return "redirect:/showrooms";
+    }
+
+    @GetMapping("/loginFailure")
+    public String loginFailure(Model model) {
+        log.info("Show login error.");
+        model.addAttribute("error", true);
+        return "login";
     }
 
 }

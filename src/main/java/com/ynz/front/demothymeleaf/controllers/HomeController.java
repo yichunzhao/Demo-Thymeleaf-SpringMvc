@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class HomeController {
 
-    @GetMapping("/")
+    @GetMapping({"/", "/home"})
     public String home(HttpSession session, Model model) {
         log.info("Get index page");
 

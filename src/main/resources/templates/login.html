@@ -16,8 +16,12 @@
 <h1>Login In</h1>
 </p>
 
+<div class="error">
+    <span th:if="${error}" class="error">Bad username or password. </span>
+</div>
+
 <p>
-<form action="#" th:action="@{/submitLogin}" method="post">
+<form th:action="@{/submitLogin}" method="post">
     <table>
         <tbody>
         <tr>
@@ -25,10 +29,7 @@
                 <label for="userName">Username: </label>
             </td>
             <td>
-                <input type="text" name="username" id="userName" th:errorclass="fieldError">
-            </td>
-            <td>
-                <span th:if="${#fields.hasErrors('loginName')}" th:errors="*{loginName}">Incorrect date</span>
+                <input type="text" name="username" id="userName">
             </td>
         </tr>
         <tr>
@@ -36,10 +37,7 @@
                 <label for="pwd">Password: </label>
             </td>
             <td>
-                <input type="text" name="password" id="pwd" th:errorclass="fieldError">
-            </td>
-            <td>
-                <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect date</span>
+                <input type="text" name="password" id="pwd">
             </td>
         </tr>
         <tr>
@@ -62,9 +60,6 @@
     <a href="/createclient">Register as a new user</a>
 </p>
 
-<div class="error">
-    <span th:text="${err}" class="error"> </span>
-</div>
 
 <div th:replace="fragments::foot"></div>
 

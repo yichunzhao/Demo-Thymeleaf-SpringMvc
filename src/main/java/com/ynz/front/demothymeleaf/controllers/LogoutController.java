@@ -11,11 +11,10 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class LogoutController {
 
-    @GetMapping("/logout")
+    @GetMapping("/logoutSuccess")
     String logout(HttpSession session) {
-        log.info("log out and invalidate current session");
+        log.info("User successfully log out");
 
-        session.invalidate();
-        return "login";
+        return "logoutSuccess";
     }
 }

@@ -2,7 +2,7 @@ package com.ynz.front.demothymeleaf.init;
 
 import com.ynz.front.demothymeleaf.Entities.Client;
 import com.ynz.front.demothymeleaf.repositories.ClientRepository;
-import com.ynz.front.demothymeleaf.security.ROLE;
+import com.ynz.front.demothymeleaf.security.Role;
 import com.ynz.front.demothymeleaf.security.UserSecDetailRepository;
 import com.ynz.front.demothymeleaf.security.UserSecurityDetails;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +32,7 @@ public class InitSecUserDB implements CommandLineRunner {
         defaultUser.setCredentialsNonExpired(true);
         defaultUser.setEnabled(true);
         defaultUser.setAccountNonLocked(true);
-        defaultUser.setRoles(Stream.of(ROLE.ADMIN, ROLE.USER).collect(toSet()));
+        defaultUser.setRoles(Stream.of(Role.ADMIN, Role.USER).collect(toSet()));
         userSecDetailRepository.save(defaultUser);
 
         Client defaultClient = Client.builder().firstName("Mike").lastName("Jones").email("test@test.com")

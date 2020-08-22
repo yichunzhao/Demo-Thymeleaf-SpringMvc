@@ -13,16 +13,12 @@
 
 <h1>Error Page</h1>
 
+<p>
 <div>
-    <table>
-        <tbody>
-        <tr th:each="error:${errs}">
-            <td th:text="${error}"></td>
-        </tr>
-        </tbody>
-    </table>
-
+    <h3>Error: <span th:text="${error}"></span></h3>
+    <h3>Status code : <span th:text="${status}"> </span></h3>
 </div>
+</p>
 
 <div th:replace="fragments::foot"></div>
 

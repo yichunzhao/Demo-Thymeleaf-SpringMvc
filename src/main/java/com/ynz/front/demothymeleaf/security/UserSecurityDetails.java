@@ -39,7 +39,7 @@ public class UserSecurityDetails {
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "USER_ROLE", joinColumns = @JoinColumn(name = "FK_USER_ID"))
     @Enumerated(EnumType.STRING)
-    private Set<ROLE> roles = new HashSet<>();
+    private Set<Role> roles = new HashSet<>();
 
     @Column(name = "ACCOUNT_NON_EXPIRED")
     private boolean accountNonExpired;
@@ -54,7 +54,7 @@ public class UserSecurityDetails {
     private boolean enabled;
 
     @Builder
-    public UserSecurityDetails(String loginName, String password, Set<ROLE> roles) {
+    public UserSecurityDetails(String loginName, String password, Set<Role> roles) {
         this.loginName = loginName;
         this.password = password;
         this.roles = roles;

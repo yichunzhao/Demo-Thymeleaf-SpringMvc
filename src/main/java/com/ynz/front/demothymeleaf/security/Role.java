@@ -1,5 +1,5 @@
 package com.ynz.front.demothymeleaf.security;
 
-public enum ROLE {
+public enum Role {
     ADMIN, USER
 }
