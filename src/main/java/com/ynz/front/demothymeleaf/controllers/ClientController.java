@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,8 +38,11 @@ public class ClientController {
     }
 
     @GetMapping("/showclients")
-    public String showClients(Model model) {
+    public String showClients(Model model, Principal principal) {
         log.info("Get showClients page");
+
+        if (principal == null) model.addAttribute("currentUser", null);
+        else model.addAttribute("currentUser", principal.getName());
 
         Mapper<Client, ClientDto> mapper = ClientMapper.instance();
         List<ClientDto> clientDtoList = new ArrayList<>();
