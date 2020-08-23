@@ -2,19 +2,25 @@ package com.ynz.front.demothymeleaf.controllers;
 
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import javax.servlet.http.HttpSession;
 
 @Controller
 @Slf4j
+@PropertySource("classpath:messages.properties")
 public class LogoutController {
+    @Value("${logout.message}")
+    private String logoutMsg;
 
     @GetMapping("/logoutSuccess")
-    String logout(HttpSession session) {
+    String logout(Model model) {
         log.info("User successfully log out");
 
-        return "logoutSuccess";
+        model.addAttribute("message", logoutMsg);
+
+        return "index";
     }
 }

@@ -1,12 +1,10 @@
 package com.ynz.front.demothymeleaf.dto;
 
 import com.ynz.front.demothymeleaf.mapper.Presentable;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
