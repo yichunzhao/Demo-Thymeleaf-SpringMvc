@@ -16,7 +16,7 @@ public class LogoutController {
     private String logoutMsg;
 
     @GetMapping("/logoutSuccess")
-    String logout(Model model) {
+    public String logout(Model model) {
         log.info("User successfully log out");
 
         model.addAttribute("message", logoutMsg);
