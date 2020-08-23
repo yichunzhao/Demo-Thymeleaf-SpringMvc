@@ -2,7 +2,6 @@ package com.ynz.front.demothymeleaf.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +10,6 @@ import java.security.Principal;
 
 @Controller
 @Slf4j
-@PropertySource("classpath:messages.properties")
 public class HomeController {
     @Value("${welcome.message}")
     private String welcomeMsg;
