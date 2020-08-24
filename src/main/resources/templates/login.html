@@ -16,12 +16,13 @@
 <h1>Login In</h1>
 </p>
 
-<div class="error">
-    <span th:if="${error}" class="error">Bad username or password. </span>
-</div>
-
 <p>
 <form th:action="@{/submitLogin}" method="post">
+
+    <div class="error">
+        <span th:if="${param.error}">Invalid username or password.</span>
+    </div>
+
     <table>
         <tbody>
         <tr>

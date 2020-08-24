@@ -30,7 +30,6 @@ public class LoginController {
     @GetMapping("/loginFailure")
     public String loginFailure(Model model) {
         log.info("Show login error.");
-        model.addAttribute("error", true);
         return "login";
     }
 
