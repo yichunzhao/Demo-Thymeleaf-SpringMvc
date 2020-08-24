@@ -27,10 +27,4 @@ public class LoginController {
         session.setMaxInactiveInterval(30);
     }
 
-    @GetMapping("/loginFailure")
-    public String loginFailure(Model model) {
-        log.info("Show login error.");
-        return "login";
-    }
-
 }
