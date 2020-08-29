@@ -1,12 +1,5 @@
 # Formed-based Spring Security using Database
 
-*SecurityContextHolder* 
-
-A `SecuityContextHolder` contains a `SecurityContext`, which cantains an `Authentication` that consists of `Principle`(user), `Credential`(pwd), Authorities(permissions).
-By default the `SecurityContextHolder` uses a ThreadLocal to store a `SecurityContext`, meaning that the `SecurityContext` is always availiable to methods in the same thread, even if the `SecurityContext` is not passed around as an argument to those methods.
-
-It is the place to store the details of who is authenticatd.
-It is the heart of Spring security authentication model, and contains the SecurityContext.
 
 *User-password authentication* 
 
