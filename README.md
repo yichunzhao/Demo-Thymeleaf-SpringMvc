@@ -1,29 +1,7 @@
 # Formed-based Spring Security using Database
 
+Using costomer login/logout form to guide user to login and logout, meanwhile user security details are peristed.  
 
-*User-password authentication* 
-
-One of the most common ways to authenticate a user by validating username and password.
-
-*Reading the username and passowrd*
-
-reading name password froma Customised login page
-
-*Storage mechanisms* 
-
-User security details is stored in a Relational database.
-
-*UserDetailsService*
-
-Core interface which loads user-specific security details. 
-
-*PasswordEncoder*
-
-Service interface for encoding password. Normally we use BCryptPasswordEncoder.
-
-*AuthenticationProvider*
-
-Indicate a class that can process Authentication. 
 
 
 
