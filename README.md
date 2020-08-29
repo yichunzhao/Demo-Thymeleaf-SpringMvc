@@ -2,8 +2,7 @@
 
 Using costomer login/logout form to guide user to login and logout, meanwhile user security details are peristed.  
 
-
-
+https://github.com/yichunzhao/authentication-usingDabase/blob/master/README.md
 
 # Thymeleaf
 
